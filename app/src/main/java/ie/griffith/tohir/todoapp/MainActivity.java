@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase sdb;
     private ListView lv_mainlist;
     private ArrayList<CustomItem> al_items;
-    private CustomArrayAdapter	caa;
+    private CustomArrayAdapter caa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +42,15 @@ public class MainActivity extends AppCompatActivity {
         // generte array list with some strings
         al_items = new ArrayList<CustomItem>();
 
-        // create an adapter and set it on listview
-        caa = new CustomArrayAdapter(this, al_items);
+//        // create an adapter and set it on listview
+//        caa = new CustomArrayAdapter(this, al_items);
 
 
         btn_add_task = (Button) findViewById(R.id.btn_add_task);
         tv_date = (TextView) findViewById(R.id.tv_date);
         lv_mainlist =	(ListView)	findViewById(R.id.lv_mainlist);
 
-        lv_mainlist.setAdapter(caa);
+
 
 
 
@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         Log.i("MainActivity", "onCreate: date set");
 
         updateListViewFromDB();
+
+
 
     }
 
@@ -89,22 +91,21 @@ public class MainActivity extends AppCompatActivity {
 
         // get object on the position
         al_items.get(position);
-        Log.i("MainActivity", "Position = " + al_items.get(position).getId());
+        Log.i("MainActivity", "deleting task at Position = " + al_items.get(position).getId());
 
         // delete from DB
         String table_name = "todo";
 
         sdb.delete(table_name, "ID" + "=?", new String[]{al_items.get(position).getId()});
 
-        al_items.remove(position);
         Toast.makeText(this, "Position = " + al_items.get(position).getId(), Toast.LENGTH_LONG).show();
-
         updateListViewFromDB();
     }
 
     public void updateListViewFromDB(){
         String table_name = "todo";
         String[] columns = {"ID", "TITLE", "TASK"};
+        al_items.clear();
 
         String where = null;
         String where_args[] = null;
@@ -125,15 +126,9 @@ public class MainActivity extends AppCompatActivity {
         }
         Log.i("MainActivity", tasks);
 
-        if (caa == null) {
-            caa = new CustomArrayAdapter(this, al_items);
-            lv_mainlist.setAdapter(caa);
-        } else {
-            caa.notifyDataSetChanged();
-        }
-
-        c.close();
-        sdb.close();
+        // create an adapter and set it on listview
+        caa = new CustomArrayAdapter(this, al_items);
+        lv_mainlist.setAdapter(caa);
     }
 
 }

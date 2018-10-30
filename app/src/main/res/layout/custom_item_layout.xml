@@ -44,5 +44,6 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/btn_edit"
         android:layout_toEndOf="@id/btn_edit"
+        android:onClick="deleteClickHandler"
         android:text="@string/btn_delete" />
 </RelativeLayout>
