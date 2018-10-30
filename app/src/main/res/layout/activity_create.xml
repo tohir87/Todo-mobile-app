@@ -36,6 +36,7 @@ tools:context=".CreateActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:onClick="createClickHandler"
         android:text="Save" />
 
 </LinearLayout>
