@@ -13,7 +13,8 @@ tools:context=".CreateActivity">
     android:layout_height="wrap_content"
     android:textSize="15sp"
     android:textStyle="bold"
-    android:text="Create New Task" />
+    android:text="@string/create_task"
+    />
 
     <EditText
         android:id="@+id/et_title"

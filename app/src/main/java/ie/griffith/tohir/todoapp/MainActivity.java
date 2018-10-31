@@ -131,4 +131,18 @@ public class MainActivity extends AppCompatActivity {
         lv_mainlist.setAdapter(caa);
     }
 
+    public void editClickHandler(View v){
+        // get the index of task to edit
+        int position = lv_mainlist.getPositionForView((View) v.getParent());
+
+        // the the task object using the index
+        CustomItem taskObject = al_items.get(position);
+        Intent intent = new Intent(MainActivity.this, EditActivity.class);
+        // pass the task custom item to the next activity
+        intent.putExtra("id", taskObject.getId());
+        intent.putExtra("title", taskObject.getTitle());
+        intent.putExtra("note", taskObject.getNote());
+        startActivity(intent);
+    }
+
 }

@@ -36,6 +36,7 @@
         android:layout_toRightOf="@id/tv_note"
         android:layout_toEndOf="@id/tv_note"
         android:layout_marginRight="10dp"
+        android:onClick="editClickHandler"
         android:text="@string/btn_edit" />
 
     <Button

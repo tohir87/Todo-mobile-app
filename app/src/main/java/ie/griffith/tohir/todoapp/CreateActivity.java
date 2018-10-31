@@ -17,6 +17,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+/**
+ * Class for adding new task
+ */
 public class CreateActivity extends AppCompatActivity {
 
     // private fields of the class
